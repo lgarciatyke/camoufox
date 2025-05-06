@@ -1,6 +1,5 @@
 import os
 from enum import Enum
-from multiprocessing import Lock
 from typing import List, Optional
 
 from .exceptions import InvalidAddonPath
@@ -40,8 +39,7 @@ def add_default_addons(
 
     addons = [addon for addon in DefaultAddons if addon not in exclude_list]
 
-    with Lock():
-        maybe_download_addons(addons, addons_list)
+    maybe_download_addons(addons, addons_list)
 
 
 def download_and_extract(url: str, extract_path: str, name: str) -> None:
